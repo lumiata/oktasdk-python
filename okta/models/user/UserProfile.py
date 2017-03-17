@@ -8,7 +8,8 @@ class UserProfile:
         'mobilePhone': str,
         'userType': str,
         'organization': str,
-        'nickName': str
+        'nickName': str,
+        'displayName': str
     }
 
     def __init__(self):
@@ -21,3 +22,4 @@ class UserProfile:
         self.organization = None # str
         self.userType = None # str
         self.nickName = None # str
+        self.displayName = None # str
