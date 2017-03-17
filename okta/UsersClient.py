@@ -92,7 +92,7 @@ class UsersClient(ApiClient):
         response = ApiClient.delete_path(self, '/{0}'.format(uid))
         return Utils.deserialize(response.text, User)
 
-    def get_paged_users(self, limit=None, filter_string=None, after=None, url=None):
+    def get_paged_users(self, limit=None, filter_string=None, search=None, after=None, url=None):
         """Get a paged list of Users
 
         :param limit: maximum number of users to return
@@ -111,7 +111,8 @@ class UsersClient(ApiClient):
             params = {
                 'limit': limit,
                 'after': after,
-                'filter': filter_string
+                'filter': filter_string,
+                'search': search
             }
             response = ApiClient.get_path(self, '/', params=params)
         return PagedResults(response, User)
