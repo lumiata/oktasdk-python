@@ -202,7 +202,7 @@ class AuthClient(ApiClient):
         response = ApiClient.post_path(self, '/recovery/password', request)
         return Utils.deserialize(response.text, AuthResult)
 
-    def forgot_password_answer(self, state_token, security_answer, new_password, relay_state=None):
+    def forgot_password_answer(self, state_token, security_answer, relay_state=None):
         """Answer the forgot password during an authentication flow
 
         :param state_token: current state token from the previous AuthResult
@@ -217,8 +217,7 @@ class AuthClient(ApiClient):
         """
         request = {
             'stateToken': state_token,
-            'securityAnswer': security_answer,
-            'newPassword': new_password,
+            'answer': security_answer,
             'relayState': relay_state
         }
 
