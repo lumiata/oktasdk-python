@@ -73,13 +73,10 @@ class UsersClient(ApiClient):
         :type activate: bool
         :rtype: User
         """
-        if activate is False:
-            response = ApiClient.post_path(self, '/', user)
-        else:
-            params = {
-                'activate': activate
-            }
-            response = ApiClient.post_path(self, '/', user, params=params)
+        params = {
+            'activate': activate
+        }
+        response = ApiClient.post_path(self, '/', user, params=params)
         return Utils.deserialize(response.text, User)
 
     def delete_user(self, uid):
