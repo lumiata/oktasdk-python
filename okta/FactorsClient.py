@@ -101,7 +101,7 @@ class FactorsClient(ApiClient):
 
     # FACTOR LIFECYCLE
 
-    def activate_factor(self, user_id, user_factor_id, passcode, next_passcode=None):
+    def activate_factor(self, user_id, user_factor_id, passcode):
         """Activate an enrolled factor
 
         :param user_id: target user id
@@ -115,8 +115,7 @@ class FactorsClient(ApiClient):
         :rtype: Factor
         """
         request = {
-            'passCode': passcode,
-            'next_passcode': next_passcode
+            'passCode': passcode
         }
         response = ApiClient.post_path(self, '/{0}/factors/{1}/lifecycle/activate'.format(user_id, user_factor_id), request)
         return Utils.deserialize(response.text, Factor)
