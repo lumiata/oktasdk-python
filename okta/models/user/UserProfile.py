@@ -9,7 +9,8 @@ class UserProfile:
         'userType': str,
         'organization': str,
         'nickName': str,
-        'displayName': str
+        'displayName': str,
+        'division': str,
     }
 
     def __init__(self):
@@ -23,3 +24,4 @@ class UserProfile:
         self.userType = None # str
         self.nickName = None # str
         self.displayName = None # str
+        self.division = None # str
