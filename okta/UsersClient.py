@@ -116,14 +116,17 @@ class UsersClient(ApiClient):
 
     # LIFECYCLE
     
-    def activate_user(self, uid):
+    def activate_user(self, uid, send_email=True):
         """Activate user by target id
 
         :param uid: the target user id
         :type uid: str
         :return: User
         """
-        response = ApiClient.post_path(self, '/{0}/lifecycle/activate'.format(uid))
+        params = {
+            'sendEmail': send_email
+        }
+        response = ApiClient.post_path(self, '/{0}/lifecycle/activate'.format(uid), params=params)
         return Utils.deserialize(response.text, User)
 
     def deactivate_user(self, uid):
