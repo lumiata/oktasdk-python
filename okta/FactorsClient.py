@@ -132,7 +132,7 @@ class FactorsClient(ApiClient):
         response = ApiClient.post_path(self, '/{0}/factors/{1}/resend'.format(user_id, user_factor_id))
         return Utils.deserialize(response.text, Factor)
 
-    def verify_factor(self, user_id, user_factor_id, activation_token=None, answer=None, passcode=None, next_passcode=None):
+    def verify_factor(self, user_id, user_factor_id, passcode=None):
         """Verify an enrolled factor
 
         :param user_id: target user id
@@ -150,10 +150,7 @@ class FactorsClient(ApiClient):
         :return:
         """
         request = {
-            'activationToken': activation_token,
-            'answer': answer,
-            'passCode': passcode,
-            'nextPassCode': next_passcode
+            'passCode': passcode
         }
         response = ApiClient.post_path(self, '/{0}/factors/{1}/verify'.format(user_id, user_factor_id), request)
         return Utils.deserialize(response.text, FactorVerificationResponse)
