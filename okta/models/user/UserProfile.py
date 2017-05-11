@@ -11,6 +11,7 @@ class UserProfile:
         'nickName': str,
         'displayName': str,
         'division': str,
+        'costCenter': str,
     }
 
     def __init__(self):
@@ -25,3 +26,4 @@ class UserProfile:
         self.nickName = None # str
         self.displayName = None # str
         self.division = None # str
+        self.costCenter = None # str
